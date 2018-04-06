@@ -1,10 +1,18 @@
 {
+  "name": "hiking_gear",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rongallant/hiking_gear.git"
+  },
   "engines": {
     "node": ">= 4.0"
   },
   "dependencies": {
     "deployd": "^1.0.0",
+    "dpd-clientlib": "^0.0.1",
     "dpd-dashboard": "^0.0.1",
-    "dpd-clientlib": "^0.0.1"
+    "npm": "^5.8.0"
   }
 }

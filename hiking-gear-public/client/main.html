@@ -1,107 +1,150 @@
 <head>
-	<title>hiking-gear-public</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>hiking-gear-public</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 </head>
 
 <body>
-	<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
-		<div class="content" id="content">
-			<main class="mdl-layout__content">
-				<h1>Welcome to hiking_gear</h1>
-				{{#if currentUser}}
-					{{> dashboard}}
-					{{> gearList}}
-				{{else}}
-					{{> register}}
-					{{> login}}
-				{{/if}}
-			</main>
-		</div>
-	</div>
+  <div class="container">
+    <h1>Welcome to hiking_gear</h1>
+    {{#if currentUser}}
+    {{> dashboard}}
+    {{> gearList}}
+    {{else}}
+    {{> register}}
+    {{> login}}
+    {{/if}}
+  </div>
+  <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+          integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+          crossorigin="anonymous"></script>
 </body>
 
 <template name="dashboard">
-	<p>You're logged in.</p>
-	<p><a href="#" class="logout">Logout</a></p>
+  <p>You're logged in.</p>
+  <p><a href="#" class="logout">Logout</a></p>
 </template>
 
 <template name="gearList">
-	<h3>Gear List</h3>
-	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-		<thead>
-			<tr>
-				<th class="mdl-data-table__cell--non-numeric">Category</th>
-				<th class="mdl-data-table__cell--non-numeric">Name</th>
-				<th class="mdl-data-table__cell--non-numeric">Description</th>
-				<th class="mdl-data-table__cell--non-numeric">Weight</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each gearListData}}
-		      {{> gearListRow (this)}}
-		    {{else}}
-		      {{> notFound}}
-		    {{/each}}
-		</tbody>
-	</table>
+  <h3>Gear List</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Category</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Weight</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each gearListData}}
+    {{> gearListRow (this)}}
+    {{else}}
+    {{> notFound}}
+    {{/each}}
+    </tbody>
+  </table>
 </template>
 
 <template name="gearListRow">
-	<tr>
-		<td class="mdl-data-table__cell--non-numeric">{{category}}</td>
-		<td class="mdl-data-table__cell--non-numeric">{{name}}</td>
-		<td class="mdl-data-table__cell--non-numeric">{{description}}</td>
-		<td class="mdl-data-table__cell--numeric">{{weight}}</td>
-	</tr>
+  <tr>
+    <td>{{category}}</td>
+    <td>{{name}}</td>
+    <td>{{description}}</td>
+    <td>{{weight}}</td>
+  </tr>
 </template>
 
 <template name="notFound">
-	<tr>
-		<td class="mdl-data-table__cell--non-numeric">Not Found</td>
-	</tr>
+  <tr>
+    <td>Not Found</td>
+  </tr>
 </template>
 
 <template name="register">
-	<div class="mdl-card mdl-shadow--6dp">
-		<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-			<h2 class="mdl-card__title-text">Register</h2>
-		</div>
-		<form>
-			<div class="mdl-card__supporting-text">
-				<div class="mdl-textfield mdl-js-textfield">
-					<input class="mdl-textfield__input" type="email" name="registerEmail">
-					<label class="mdl-textfield__label" for="registerEmail">Username</label>
-				</div>
-				<div class="mdl-textfield mdl-js-textfield">
-					<input class="mdl-textfield__input" type="password" name="registerPassword">
-					<label class="mdl-textfield__label" for="registerPassword">Password</label>
-				</div>
-			</div>
-			<div class="mdl-card__actions mdl-card--border">
-				<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Register">
-			</div>
-		</form>
-	</div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Register</h3>
+        </div>
+        <div class="card-body">
+          <form class="form" role="form" id="formRegister">
+            <div class="form-group">
+              <label for="registerEmail">Email</label>
+              <input type="text" class="form-control form-control-lg rounded-0"
+                     id="registerEmail" name="registerEmail" required="">
+              <div class="invalid-feedback">Oops, you missed this one.</div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control form-control-lg rounded-0"
+                     id="registerPassword" name="registerPassword"
+                     required="" autocomplete="new-password">
+              <div class="invalid-feedback">Enter your password too!</div>
+            </div>
+            <button class="btn btn-success btn-lg float-right" id="btnRegister" type="submit">
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="login">
-	<div class="mdl-card mdl-shadow--6dp">
-		<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-			<h2 class="mdl-card__title-text">Login</h2>
-		</div>
-		<form>
-			<div class="mdl-card__supporting-text">
-				<div class="mdl-textfield mdl-js-textfield">
-					<input class="mdl-textfield__input" type="email" name="loginEmail">
-					<label class="mdl-textfield__label" for="loginEmail">Username</label>
-				</div>
-				<div class="mdl-textfield mdl-js-textfield">
-					<input class="mdl-textfield__input" type="password" name="loginPassword">
-					<label class="mdl-textfield__label" for="loginPassword">Password</label>
-				</div>
-			</div>
-			<div class="mdl-card__actions mdl-card--border">
-				<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Login">
-			</div>
-		</form>
-	</div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Login</h3>
+        </div>
+        <div class="card-body">
+          <form class="form" role="form" id="formLogin">
+            <div class="form-group">
+              <label for="registerEmail">Email</label>
+              <input type="text" class="form-control form-control-lg rounded-0"
+                     name="loginEmail" id="loginEmail" required="">
+              <div class="invalid-feedback">Oops, you missed this one.</div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control form-control-lg rounded-0"
+                     id="loginPassword" name="loginPassword"
+                     required="" autocomplete="new-password">
+              <div class="invalid-feedback">Enter your password too!</div>
+            </div>
+            <div>
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description small text-dark">Remember me on this computer</span>
+              </label>
+            </div>
+            <button class="btn btn-success btn-lg float-right" id="btnLogin" type="submit">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

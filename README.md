@@ -34,17 +34,28 @@ purposes. See deployment for notes on how to deploy the project on a live system
 A step by step series of examples that tell you have to get a development env running.
 
 1. Install Prerequisites.
-2. Clone project.
-3. in the hiking-gear-api folder:
-	* ``` npm install ```
+	* npm install deployd -g
+2. Clone project (https://github.com/rongallant/hiking_gear.git).
 
-## Built With
+##### Run API
+From hiking-gear-api folder.
+1. Download dependencies: ``` npm install ```
+2. Run Deployd: ``` dpd -d ```
 
-* [Node.js](https://nodejs.org/) - The web framework used
+##### Run UI
+From hiking-gear-public folder.
+
+1. Download dependencies: ``` npm install ```
+2. ``` meteor ```
+
+#### Built With
+
+* [Node.js](https://nodejs.org/) - The web application framework
 * [MongoDB](http://mongodb.com/) - Database
 * [Deployd](http://deployd.com/) - API Framework
+* [Meteor](http://www.meteor.com/) - UI Framework
 
-## Authors
+#### Authors
 
 * **Ron Gallant** - *Initial work* - [rongallant](https://github.com/rongallant)
 
